@@ -1,0 +1,39 @@
+{
+    "name": "@streamnvr.com/rbac",
+    "version": "0.0.2",
+    "main": "dist/main.js",
+    "types": "dist/main.d.ts",
+    "license": "MIT",
+    "preversion": "rm -rf dist && tsc",
+    "postversion": "npm publish",
+    "scripts": {
+        "build": "tsc",
+        "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.json\" ",
+        "release": "rm -rf dist && tsc && npm version patch && npm publish --access=private"
+    },
+    "dependencies": {
+        "@nestjs-plus/rabbitmq": "^1.4.4",
+        "@nestjs.pro/common": "^1.0.26",
+        "@nestjs.pro/logger-elasticsearch": "^0.0.11",
+        "@nestjs.pro/monitoring": "^0.0.14",
+        "@nestjs.pro/rbac": "^0.0.13",
+        "@nestjs/common": "^6.11.6",
+        "@nestjs/core": "^6.11.6",
+        "@nestjs/swagger": "^4.2.7",
+        "@nestjs/typeorm": "^6.3.1",
+        "@streamnvr.com/models": "^0.0.9",
+        "bcrypt": "^3.0.8",
+        "class-validator": "^0.11.0",
+        "dotenv": "^8.2.0",
+        "typeorm": "^0.2.22"
+    },
+    "devDependencies": {
+        "@types/jest": "^25.1.2",
+        "@types/node": "^13.7.1",
+        "concurrently": "^5.1.0",
+        "jest": "^25.1.0",
+        "ts-jest": "^25.2.0",
+        "typescript": "^3.7.5",
+        "wait-on": "^4.0.0"
+    }
+}

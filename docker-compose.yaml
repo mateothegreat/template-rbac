@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  rbac:
+
+    build:
+
+      context: .
+
+    hostname:       rbac
+    container_name: rbac
+
+    environment:
+
+      DB_HOSTNAME:       mysql
+      PORT:              80
+      RABBITMQ_URI:      amqp://rabbitmq:agaeq14@rabbitmq:5672
+      RABBITMQ_EXCHANGE: rbac
+
+    ports:
+
+      - 80
+
+    networks:
+
+      streamnvr:
+
+networks:
+
+  streamnvr:
+
+    external: true
